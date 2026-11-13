@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f4ef">
+    <title>Hum — find that song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js?v=1" defer></script>
+    <script src="app.js?v=10" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Hum home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        hum<span class="brand-period">.</span>
+      </a>
+      <span class="top-note"><span class="live-dot"></span> A little song detective</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow"><span>♪</span> THE SONG IS ON THE TIP OF YOUR TONGUE</div>
+        <h1 id="page-title">Sing a few words.<br><span>Find your song.</span></h1>
+        <p class="intro-copy">Sing a lyric and we’ll compare its words with available lyrics and song titles. Hum along to see the mic react.</p>
+      </section>
+
+      <section class="finder" aria-label="Song finder">
+        <div class="listen-card">
+          <div class="card-heading">
+            <div>
+              <p class="section-kicker">READY WHEN YOU ARE</p>
+              <h2>Make some music</h2>
+            </div>
+            <span class="mic-badge" aria-hidden="true">♫</span>
+          </div>
+          <div class="sound-stage" id="sound-stage" aria-label="Microphone is off">
+            <div class="sound-orbit orbit-one"></div>
+            <div class="sound-orbit orbit-two"></div>
+            <div class="mic-circle" id="mic-circle"><span aria-hidden="true">🎙️</span></div>
+            <canvas id="waveform" aria-hidden="true"></canvas>
+          </div>
+          <p class="listen-status" id="listen-status" role="status" aria-live="polite">Record up to 20 seconds, then stop to transcribe and search.</p>
+          <div class="detected-line" id="detected-line" hidden>
+            <span class="detected-label">I heard</span>
+            <span id="transcript"></span>
+          </div>
+          <button class="listen-button" id="listen-button" type="button">
+            <span class="button-icon" aria-hidden="true">●</span>
+            <span id="button-label">Start recording</span>
+          </button>
+          <p class="privacy-note" id="privacy-note"><span aria-hidden="true">⌑</span> Singing stays on this device. First use downloads an approximately 40 MB Whisper model.</p>
+        </div>
+
+        <div class="results-card">
+          <div class="results-heading">
+            <div>
+              <p class="section-kicker">THE DETECTIVE BOARD</p>
+              <h2>Your best matches <span class="result-count" id="result-count"></span></h2>
+            </div>
+            <span class="sparkle" aria-hidden="true">✳</span>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <div class="empty-art" aria-hidden="true">
+              <span class="note note-one">♪</span><span class="note note-two">♫</span><span class="empty-disc"></span>
+            </div>
+            <p class="empty-title">Waiting for a clue</p>
+            <p class="empty-copy">Start singing a lyric and your matches will show up here.</p>
+          </div>
+          <div class="loading-state" id="loading-state" hidden>
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Following that tune…</span>
+          </div>
+          <div class="error-state" id="error-state" role="status" hidden></div>
+          <ol class="results-list" id="results-list" aria-live="polite"></ol>
+
+          <form class="manual-search" id="search-form">
+            <label id="search-label" for="lyric-input">Know a word or two?</label>
+            <div class="search-control">
+              <input id="lyric-input" type="search" placeholder="Type a lyric or song clue…" autocomplete="off">
+              <button type="submit" aria-label="Search for song">↗</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <p class="footer-note">Lyrics aren’t available for every song, so title matches are included too. Humming alone can’t identify a melody yet.</p>
+    </main>
+    <footer>
+      <span>Made for the songs you almost remember.</span>
+      <span class="footer-right">MIC OFF WHEN PAUSED <span class="footer-lock" aria-hidden="true">◇</span></span>
+    </footer>
+  </body>
+</html>
